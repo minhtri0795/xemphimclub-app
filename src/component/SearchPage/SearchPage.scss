@@ -1,0 +1,18 @@
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 48px 0;
+  input {
+    width: 96%;
+    height: 50px;
+    margin-bottom: 20px;
+    padding: 0 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    &:focus {
+      outline-color: #5a9eda;
+    }
+  }
+}

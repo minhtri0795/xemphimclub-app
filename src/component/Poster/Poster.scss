@@ -1,0 +1,27 @@
+.title-list {
+  display: flex;
+
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    .poster-item {
+      $width: 16px;
+      max-width: 23%;
+      flex: 0 0 23%;
+      margin: 0 8px;
+      justify-content: center;
+      cursor: pointer;
+      img {
+        width: 100%;
+      }
+      h3 {
+        color: #ccc;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: normal;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
