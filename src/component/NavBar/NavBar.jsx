@@ -1,22 +1,31 @@
 import React from "react";
 import "./NavBar.scss";
 import logo from "../../images/logo-full.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 function NavBar() {
   return (
     <div className="nav-bar">
-      <Link to="/">
+      <NavLink to="/">
         <a className="logo" href="">
           <img src={logo} alt="logo" />
         </a>
-      </Link>
+      </NavLink>
       <ul className="menu">
         <li>
-          <Link to="/search">Search</Link>
+          <NavLink activeClassName="selected" to="/search">
+            Tìm kiếm
+          </NavLink>
         </li>
-        <li key="movie">Movie</li>
-        <li key="TV">TV shows</li>
-        <li key="all">All Movie</li>
+        <li key="movie">
+          <NavLink activeClassName="selected" to="/type/movie">
+            Phim lẻ
+          </NavLink>
+        </li>
+        <li key="TV">
+          <NavLink activeClassName="selected" to="/type/tv">
+            Phim bộ
+          </NavLink>
+        </li>
       </ul>
     </div>
   );

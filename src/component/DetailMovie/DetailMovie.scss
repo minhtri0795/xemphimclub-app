@@ -1,0 +1,16 @@
+.backdrop {
+  height: 600px;
+  background-size: cover;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.section {
+  .poster-column {
+    padding: 12px 32px;
+    width: 25%;
+  }
+  .main-column {
+    width: 75%;
+  }
+}

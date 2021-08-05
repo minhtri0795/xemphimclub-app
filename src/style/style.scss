@@ -17,14 +17,45 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 .App {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   .title {
-    width: 95%;
-    margin: 25px 0 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    margin: 25px 0 20px 0;
     border-bottom: 1px solid #ccc;
-    color: #b1a21e;
-    font-size: 24px;
-    font-weight: 400;
+
+    h2 {
+      font-size: 24px;
+      color: #b1a21e;
+      font-weight: 400;
+    }
+    p {
+      font-size: 16px;
+      color: #fff;
+      position: relative;
+      padding-right: 20px;
+      &::after {
+        position: absolute;
+        content: "";
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        right: 5px;
+        top: 40%;
+      }
+    }
   }
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.movie-page {
+  padding: 48px 0;
 }

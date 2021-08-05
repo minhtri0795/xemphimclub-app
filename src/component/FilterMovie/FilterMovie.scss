@@ -1,0 +1,60 @@
+.filter-wrapper {
+  display: flex;
+  background-color: #091c2d;
+  margin-bottom: 12px;
+  margin-top: 20px;
+  padding: 0 12px;
+  border-radius: 5px;
+  .select-field {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    label {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .select {
+      display: inline-block;
+      max-width: 100%;
+      position: relative;
+      vertical-align: top;
+      height: 40px;
+      select {
+        height: 100%;
+        width: 180px;
+        font-size: 16px;
+        border-radius: 5px;
+        padding: 7px 40px 7px 10px;
+        position: relative;
+        -moz-appearance: none; /* Firefox */
+        -webkit-appearance: none; /* Safari and Chrome */
+        appearance: none;
+        cursor: pointer;
+      }
+      &::after {
+        border: 3px solid #428bca;
+        border-radius: 2px;
+        border-right: 0px;
+        border-top: 2px;
+        content: " ";
+        top: 50%;
+        right: 20px;
+        display: block;
+        height: 8px;
+        width: 8px;
+        margin-top: -0.4375em;
+        pointer-events: none;
+        position: absolute;
+        transform: rotate(-45deg);
+        transform-origin: center;
+      }
+      &:hover {
+        &::after {
+          border-color: orange;
+        }
+      }
+    }
+  }
+}

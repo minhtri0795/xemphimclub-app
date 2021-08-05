@@ -1,9 +1,14 @@
 .nav-bar {
   display: flex;
   margin-top: 20px;
-  margin-bottom: 10px;
+  padding: 0 20px;
   justify-content: flex-start;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
   .logo {
     margin-right: 12px;
     width: 110px;
@@ -18,7 +23,10 @@
       margin: 0 12px;
       cursor: pointer;
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 400;
+      .selected {
+        border: 2px orange solid;
+      }
     }
   }
 }
