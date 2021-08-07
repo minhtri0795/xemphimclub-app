@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import FilterMovie from "../FilterMovie/FilterMovie";
 import Pagination from "../Pagination/Pagination";
 import Poster from "../Poster/Poster";
-function TVPage() {
+function TVPage({ getId }) {
   const [filters, setFilters] = useState({
     page: 1,
   });
@@ -27,13 +26,15 @@ function TVPage() {
 
   return (
     <div className="movie-page">
-      <h1 style={{ color: "#fff", fontWeight: "500" }}>Phim bộ</h1>
-      <Poster filmData={renderfilm} number={16} />
-      <Pagination
-        page={filters.page}
-        totalPage={totalPage}
-        handlePageChange={handlePageChange}
-      />
+      <div className="container">
+        <h1 style={{ color: "#fff", fontWeight: "500" }}>Phim bộ</h1>
+        <Poster type={"tv"} getId={getId} filmData={renderfilm} number={16} />
+        <Pagination
+          page={filters.page}
+          totalPage={totalPage}
+          handlePageChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 }

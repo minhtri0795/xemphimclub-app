@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import CastDetail from "./component/CastDetail/CastDetail";
 import DetailMovie from "./component/DetailMovie/DetailMovie";
+import FAQpage from "./component/FAQpage/FAQpage";
+import Footer from "./component/Footer/Footer";
 import MoviePage from "./component/MoviePage/MoviePage";
 import NavBar from "./component/NavBar/NavBar";
 import Poster from "./component/Poster/Poster";
@@ -34,9 +37,19 @@ function App() {
     fecthMovie("tv");
     fecthMovie("movie");
   }, []);
-  const [id, setId] = useState(497698);
-  const getId = (newId) => {
+  const [id, setId] = useState();
+  const [cast, setCast] = useState({
+    castId: "",
+    name: "",
+  });
+  const [type, setType] = useState("");
+  const getId = (newId, newType) => {
     setId(newId);
+    setType(newType);
+  };
+  const getCastId = (myCastId, myCastName) => {
+    const newCast = { ...cast, castId: myCastId, name: myCastName };
+    setCast(newCast);
   };
   return (
     <Router>
@@ -44,24 +57,35 @@ function App() {
         <NavBar />
         <Switch>
           <Route path="/search">
-            <SearchPage />
+            <SearchPage getId={getId} />
           </Route>
           <Route path="/type/movie">
             <MoviePage getId={getId} />
           </Route>
           <Route path="/type/tv">
-            <TVPage />
+            <TVPage getId={getId} />
           </Route>
-          <Route exact path={`/movie/${id}`}>
-            <DetailMovie id={id} />
+          <Route exact path={`/FAQ`}>
+            <FAQpage />
+          </Route>
+          <Route exact path={`/${type}/${id}`}>
+            <DetailMovie id={id} type={type} getCastId={getCastId} />
+          </Route>
+          <Route exact path={`/cast/${cast.name}`}>
+            <CastDetail cast={cast} getId={getId} />
           </Route>
           <Route path="/">
-            <div className="container">
+            <div style={{ marginTop: "130px" }} className="container">
               <div className="title">
                 <h2>PHIM ĐỀ CỬ</h2>
               </div>
             </div>
-            <Poster getId={getId} filmData={recommentFilm} number={8} />
+            <Poster
+              type={"movie"}
+              getId={getId}
+              filmData={recommentFilm}
+              number={8}
+            />
             <div className="container">
               <div className="title">
                 <h2>PHIM LẺ MỚI CẬP NHẬT</h2>
@@ -70,7 +94,12 @@ function App() {
                 </p>
               </div>
             </div>
-            <Poster getId={getId} filmData={newFilm} number={8} />
+            <Poster
+              type={"movie"}
+              getId={getId}
+              filmData={newFilm}
+              number={8}
+            />
             <div className="container">
               <div className="title">
                 <h2>PHIM BỘ MỚI CẬP NHẬT</h2>
@@ -79,9 +108,10 @@ function App() {
                 </p>
               </div>
             </div>
-            <Poster getId={getId} filmData={newTV} number={8} />
+            <Poster type={"tv"} getId={getId} filmData={newTV} number={8} />
           </Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );

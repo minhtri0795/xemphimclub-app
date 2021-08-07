@@ -84,7 +84,7 @@ function CountrySelect() {
   });
   return (
     <>
-      <option value="">Tất cả</option>
+      <option value="">- Tất cả -</option>
       {countryOption}
     </>
   );

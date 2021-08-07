@@ -55,7 +55,9 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 .movie-page {
+  margin-top: 50px;
   padding: 48px 0;
 }

@@ -17,7 +17,7 @@ const GenreSelect = () => {
   });
   return (
     <>
-      <option value="">All Movie</option>
+      <option value="">- Tất cả -</option>
       {genresOption}
     </>
   );

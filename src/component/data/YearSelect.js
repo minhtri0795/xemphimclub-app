@@ -11,7 +11,7 @@ const ReleaseYear = () => {
   });
   return (
     <>
-      <option value="">All Year</option>
+      <option value="">- Tất cả -</option>
       {yearOption}
     </>
   );

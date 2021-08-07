@@ -1,0 +1,40 @@
+footer {
+  padding: 3rem 1.5rem 6rem;
+  a {
+    color: #428bca;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline;
+  }
+  h3 {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.125;
+    word-break: break-word;
+    margin-bottom: 1.5rem;
+  }
+  ul {
+    list-style: circle;
+    color: #b5b5b5;
+    margin: 2rem;
+  }
+  .footer-contact {
+    display: flex;
+    justify-content: space-between;
+    .layout_facebook {
+      background-color: #ddd;
+      border-radius: 5px;
+      display: inline-block;
+      padding: 5px;
+      color: #00f;
+      text-decoration: none;
+      svg {
+        fill: #4267b2;
+        margin-right: 0.5em;
+        vertical-align: sub;
+        width: 1.2em;
+      }
+    }
+  }
+}

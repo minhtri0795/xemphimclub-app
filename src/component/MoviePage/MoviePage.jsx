@@ -51,7 +51,12 @@ function MoviePage({ getId }) {
           handChangeCountry={handChangeCountry}
           handleSort={handleSort}
         />
-        <Poster getId={getId} filmData={renderfilm} number={16} />
+        <Poster
+          type={"movie"}
+          getId={getId}
+          filmData={renderfilm}
+          number={16}
+        />
         <Pagination
           page={filters.page}
           totalPage={totalPage}

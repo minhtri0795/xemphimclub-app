@@ -1,6 +1,7 @@
 .nav-bar {
   display: flex;
-  margin-top: 20px;
+  height: 50px;
+  // margin-top: 10px;
   padding: 0 20px;
   justify-content: flex-start;
   align-items: center;
@@ -9,6 +10,11 @@
   left: 0;
   right: 0;
   z-index: 30;
+  #search-icon {
+    width: 1em;
+    fill: #fff;
+    margin-right: 4px;
+  }
   .logo {
     margin-right: 12px;
     width: 110px;
@@ -20,12 +26,14 @@
     display: flex;
     li {
       color: white;
-      margin: 0 12px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 400;
+      a {
+        padding: 12px;
+      }
       .selected {
-        border: 2px orange solid;
+        background-color: #102c48;
       }
     }
   }
