@@ -29,8 +29,7 @@
       max-width: 100%;
     }
     .watch-btn {
-      border-color: #dbdbdb;
-      border-width: 1px;
+      border: none;
       border-radius: 3px;
       color: #fff;
       cursor: pointer;
@@ -284,6 +283,83 @@
           .icon {
             display: block;
           }
+        }
+      }
+      .modal {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 1000;
+      }
+      .modal-background {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: rgba(10, 10, 10, 0.86);
+      }
+      .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-height: calc(100vh - 40px);
+        width: auto;
+        max-width: 100%;
+      }
+      .embed-responsive {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 0;
+        overflow: hidden;
+        max-width: 100%;
+      }
+      .modal-close {
+        border: none;
+        border-radius: 290486px;
+        cursor: pointer;
+        pointer-events: auto;
+        display: inline-block;
+        flex-grow: 0;
+        flex-shrink: 0;
+        font-size: 0;
+        outline: none;
+        user-select: none;
+        background: none;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        height: 32px;
+        max-height: 32px;
+        max-width: 32px;
+        min-height: 32px;
+        min-width: 32px;
+        width: 32px;
+        &::before,
+        &::after {
+          background-color: #fff;
+          content: "";
+          display: block;
+          left: 50%;
+          position: absolute;
+          top: 50%;
+          -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+          transform: translateX(-50%) translateY(-50%) rotate(45deg);
+          -webkit-transform-origin: center center;
+          transform-origin: center center;
+          height: 2px;
+          width: 50%;
+        }
+        &::after {
+          height: 50%;
+          width: 2px;
+        }
+        &:hover {
+          background: #06121e;
         }
       }
     }

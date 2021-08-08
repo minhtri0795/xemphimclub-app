@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import TrailerPopup from "./TrailerPopup";
 const MultipleItems = ({ id, type }) => {
   const [trailer, setTrailer] = useState([]);
+  const [videoKey, setVideoKey] = useState("");
+  console.log(videoKey);
   useEffect(() => {
     const getTrailer = async () => {
       const url = `
@@ -19,7 +22,12 @@ const MultipleItems = ({ id, type }) => {
   const trailerVideo = trailer.map((video) => {
     return (
       <div className="item">
-        <div className="clip">
+        <div
+          className="clip"
+          onClick={() => {
+            setVideoKey(video.key);
+          }}
+        >
           <img
             className="trailer-img"
             alt={video.key}
@@ -41,9 +49,17 @@ const MultipleItems = ({ id, type }) => {
     slidesToShow: 4,
     slidesToScroll: 4,
   };
+  const closePopup = () => {
+    setVideoKey("");
+  };
   return (
     <div>
       <Slider {...settings}>{trailerVideo}</Slider>
+      {videoKey ? (
+        <TrailerPopup videoKey={videoKey} closePopup={closePopup} />
+      ) : (
+        ""
+      )}
     </div>
   );
 };
