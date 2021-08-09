@@ -1,10 +1,10 @@
 .filter-wrapper {
   display: flex;
   background-color: #091c2d;
-  margin-bottom: 12px;
-  margin-top: 20px;
+  margin: 20px -12px 12px -12px;
   padding: 0 12px;
   border-radius: 5px;
+  flex-wrap: wrap;
   .select-field {
     display: flex;
     flex-direction: column;
@@ -28,8 +28,8 @@
         border-radius: 5px;
         padding: 7px 40px 7px 10px;
         position: relative;
-        -moz-appearance: none; /* Firefox */
-        -webkit-appearance: none; /* Safari and Chrome */
+        -moz-appearance: none;
+        -webkit-appearance: none;
         appearance: none;
         cursor: pointer;
       }
@@ -53,6 +53,19 @@
       &:hover {
         &::after {
           border-color: orange;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .filter-wrapper {
+    .select-field {
+      max-width: 50%;
+      flex: 0 0 50%;
+      .select {
+        select {
+          width: 100%;
         }
       }
     }

@@ -20,6 +20,9 @@
   }
   .tt-detail {
     display: flex;
+    flex-wrap: wrap;
+    margin-left: -32px;
+    margin-right: -32px;
   }
   .poster-column {
     padding: 12px 32px;
@@ -362,6 +365,28 @@
           background: #06121e;
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .poster-column,
+  .main-column {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+  .poster-column {
+    display: flex;
+    flex-direction: column;
+  }
+  .level.genres {
+    flex-direction: column;
+    .level-left {
+      margin-right: 0 !important;
+      margin-bottom: 20px;
+    }
+    .level-right {
+      text-align: center;
     }
   }
 }

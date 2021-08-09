@@ -9,29 +9,27 @@ function Poster({ type, filmData, number, getId }) {
   let history = useHistory();
   return (
     <div className="title-list">
-      <div className="container">
-        <ul>
-          {filmData.map((film) => {
-            return (
-              <li
-                onClick={() => {
-                  history.push(`/${type}/${film.id}`);
-                  getId(film.id, type);
-                }}
-                className="poster-item"
-              >
-                <div className="poster-img">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
-                    alt=""
-                  />
-                </div>
-                <h3 className="poster-name">{film.title || film.name}</h3>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <ul>
+        {filmData.map((film) => {
+          return (
+            <li
+              onClick={() => {
+                history.push(`/${type}/${film.id}`);
+                getId(film.id, type);
+              }}
+              className="poster-item"
+            >
+              <div className="poster-img">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
+                  alt=""
+                />
+              </div>
+              <h3 className="poster-name">{film.title || film.name}</h3>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

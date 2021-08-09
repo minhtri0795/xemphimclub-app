@@ -10,6 +10,7 @@ import NavBar from "./component/NavBar/NavBar";
 import Poster from "./component/Poster/Poster";
 import SearchPage from "./component/SearchPage/SearchPage";
 import TVPage from "./component/TVPage/TVPage";
+import WatchPage from "./component/WatchPage/WatchPage";
 function App() {
   const [recommentFilm, setRecommnetFilm] = useState([]);
   const [newFilm, setNewFilm] = useState([]);
@@ -74,41 +75,42 @@ function App() {
           <Route exact path={`/cast/${cast.name}`}>
             <CastDetail cast={cast} getId={getId} />
           </Route>
+          <Route exact path={`/watch/${type}/${id}`}>
+            <WatchPage type={type} id={id} />
+          </Route>
           <Route path="/">
-            <div style={{ marginTop: "130px" }} className="container">
-              <div className="title">
-                <h2>PHIM ĐỀ CỬ</h2>
+            <div className="home-section">
+              <div className="container">
+                <div className="title">
+                  <h2>PHIM ĐỀ CỬ</h2>
+                </div>
+                <Poster
+                  type={"movie"}
+                  getId={getId}
+                  filmData={recommentFilm}
+                  number={8}
+                />
+                <div className="title">
+                  <h2>PHIM LẺ MỚI CẬP NHẬT</h2>
+                  <p>
+                    <Link to="/type/movie">Xem tất cả</Link>
+                  </p>
+                </div>
+                <Poster
+                  type={"movie"}
+                  getId={getId}
+                  filmData={newFilm}
+                  number={8}
+                />
+                <div className="title">
+                  <h2>PHIM BỘ MỚI CẬP NHẬT</h2>
+                  <p>
+                    <Link to="/type/tv">Xem tất cả</Link>
+                  </p>
+                </div>
+                <Poster type={"tv"} getId={getId} filmData={newTV} number={8} />
               </div>
             </div>
-            <Poster
-              type={"movie"}
-              getId={getId}
-              filmData={recommentFilm}
-              number={8}
-            />
-            <div className="container">
-              <div className="title">
-                <h2>PHIM LẺ MỚI CẬP NHẬT</h2>
-                <p>
-                  <Link to="/type/movie">Xem tất cả</Link>
-                </p>
-              </div>
-            </div>
-            <Poster
-              type={"movie"}
-              getId={getId}
-              filmData={newFilm}
-              number={8}
-            />
-            <div className="container">
-              <div className="title">
-                <h2>PHIM BỘ MỚI CẬP NHẬT</h2>
-                <p>
-                  <Link to="/type/tv">Xem tất cả</Link>
-                </p>
-              </div>
-            </div>
-            <Poster type={"tv"} getId={getId} filmData={newTV} number={8} />
           </Route>
         </Switch>
         <Footer />

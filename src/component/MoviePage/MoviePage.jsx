@@ -42,7 +42,7 @@ function MoviePage({ getId }) {
     setFilters({ ...filters, page: 1, sortBy: value });
   };
   return (
-    <div className="movie-page">
+    <div className="movie-section">
       <div className="container">
         <h1 style={{ color: "#fff", fontWeight: "500" }}>Phim lẻ</h1>
         <FilterMovie

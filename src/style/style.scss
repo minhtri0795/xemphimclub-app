@@ -19,6 +19,7 @@ body {
 .App {
   max-width: 100%;
   margin: 0 auto;
+  overflow: hidden;
   .title {
     display: flex;
     justify-content: space-between;
@@ -26,8 +27,8 @@ body {
     width: 100%;
     margin: 25px 0 20px 0;
     border-bottom: 1px solid #ccc;
-
     h2 {
+      font-family: Oswald, sans-serif;
       font-size: 24px;
       color: #b1a21e;
       font-weight: 400;
@@ -52,12 +53,15 @@ body {
     }
   }
 }
+.home-section,
+.movie-section {
+  padding: 48px 12px;
+}
+.movie-section {
+  margin-top: 50px;
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-}
-.movie-page {
-  margin-top: 50px;
-  padding: 48px 0;
 }

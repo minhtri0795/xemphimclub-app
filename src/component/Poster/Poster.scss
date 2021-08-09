@@ -24,3 +24,13 @@
     }
   }
 }
+@media only screen and (max-width: 1024px) {
+  .title-list {
+    ul {
+      .poster-item {
+        max-width: 48%;
+        flex: 0 0 48%;
+      }
+    }
+  }
+}

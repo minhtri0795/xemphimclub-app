@@ -25,9 +25,11 @@ function TVPage({ getId }) {
   };
 
   return (
-    <div className="movie-page">
+    <div className="movie-section">
       <div className="container">
-        <h1 style={{ color: "#fff", fontWeight: "500" }}>Phim bộ</h1>
+        <h1 style={{ color: "#fff", fontWeight: "500", marginBottom: "24px" }}>
+          Phim bộ
+        </h1>
         <Poster type={"tv"} getId={getId} filmData={renderfilm} number={16} />
         <Pagination
           page={filters.page}
