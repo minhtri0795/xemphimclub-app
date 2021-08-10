@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import CastDetail from "./component/CastDetail/CastDetail";
+import Colection from "./component/Colection/Colection";
 import DetailMovie from "./component/DetailMovie/DetailMovie";
 import FAQpage from "./component/FAQpage/FAQpage";
 import Footer from "./component/Footer/Footer";
@@ -39,11 +40,12 @@ function App() {
     fecthMovie("movie");
   }, []);
   const [id, setId] = useState();
+  const [type, setType] = useState("");
   const [cast, setCast] = useState({
     castId: "",
     name: "",
   });
-  const [type, setType] = useState("");
+
   const getId = (newId, newType) => {
     setId(newId);
     setType(newType);
@@ -51,6 +53,12 @@ function App() {
   const getCastId = (myCastId, myCastName) => {
     const newCast = { ...cast, castId: myCastId, name: myCastName };
     setCast(newCast);
+  };
+  const [colection, setColection] = useState([]);
+  const getColection = (colectionFilm) => {
+    const newColection = [...colection];
+    newColection.unshift(colectionFilm);
+    setColection(newColection);
   };
   return (
     <Router>
@@ -69,8 +77,16 @@ function App() {
           <Route exact path={`/FAQ`}>
             <FAQpage />
           </Route>
+          <Route exact path={`/colection`}>
+            <Colection type={type} colection={colection} getId={getId} />
+          </Route>
           <Route exact path={`/${type}/${id}`}>
-            <DetailMovie id={id} type={type} getCastId={getCastId} />
+            <DetailMovie
+              id={id}
+              type={type}
+              getCastId={getCastId}
+              getColection={getColection}
+            />
           </Route>
           <Route exact path={`/cast/${cast.name}`}>
             <CastDetail cast={cast} getId={getId} />

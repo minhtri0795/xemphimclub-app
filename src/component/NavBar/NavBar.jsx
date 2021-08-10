@@ -53,6 +53,13 @@ function NavBar() {
             </NavLink>
           </li>
         </ul>
+        <div className="colection">
+          <p>
+            <NavLink activeClassName="selected" to="/colection">
+              Bộ sưu tập
+            </NavLink>
+          </p>
+        </div>
       </div>
       <div className={`nav-bar-mobile ${sidebar}`}>
         <div
@@ -80,6 +87,11 @@ function NavBar() {
           <li key="FAQ">
             <NavLink activeClassName="selected" to="/FAQ">
               FAQ
+            </NavLink>
+          </li>
+          <li key="colection">
+            <NavLink activeClassName="selected" to="/colection">
+              Bộ sưu tập
             </NavLink>
           </li>
         </ul>

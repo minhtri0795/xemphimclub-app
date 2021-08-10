@@ -41,6 +41,19 @@
       }
     }
   }
+  .colection {
+    height: 100%;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    position: absolute;
+    right: 12px;
+    p {
+      height: 100%;
+      line-height: 50px;
+    }
+  }
 }
 
 .nav-bar-mobile,
@@ -61,6 +74,9 @@
           display: none;
         }
       }
+    }
+    .colection {
+      display: none;
     }
   }
 

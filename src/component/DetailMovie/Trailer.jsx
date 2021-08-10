@@ -48,6 +48,18 @@ const MultipleItems = ({ id, type }) => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          arrows: false,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: false,
+          dots: false,
+        },
+      },
+    ],
   };
   const closePopup = () => {
     setVideoKey("");

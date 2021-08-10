@@ -212,3 +212,14 @@
     color: #7a7a7a;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .columns.watch-top {
+    flex-direction: column;
+  }
+  .video {
+    iframe {
+      height: 360px !important;
+    }
+  }
+}

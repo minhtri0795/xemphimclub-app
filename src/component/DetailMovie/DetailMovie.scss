@@ -135,11 +135,15 @@
           margin-right: 12px;
         }
         &:last-child {
-          a {
+          p {
             background-color: #48c774;
+            &.add {
+              background-color: lightcoral;
+            }
           }
         }
-        a {
+        a,
+        p {
           display: flex;
           align-items: center;
           border-width: 1px;
@@ -156,7 +160,7 @@
           svg {
             height: 1.3em;
             fill: #fff;
-            margin-right: 0.9em;
+            margin-right: 0.4em;
           }
         }
       }
@@ -210,8 +214,14 @@
       }
       .slick-prev,
       .slick-next {
-        top: 30% !important;
+        position: absolute;
+        top: 30%;
+        z-index: 2;
+        &::before {
+          font-size: 25px;
+        }
       }
+
       .item {
         text-align: center;
         font-size: 0.9em;
@@ -226,6 +236,7 @@
         width: 100%;
       }
       figure {
+        margin: 0 auto;
         height: 120px;
         width: 120px;
         position: relative;
@@ -378,6 +389,28 @@
   .poster-column {
     display: flex;
     flex-direction: column;
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .main-column {
+    .cast {
+      .slick-prev {
+        left: 0;
+      }
+      .slick-next {
+        right: 0;
+      }
+    }
+    .trailer {
+      .slick-prev {
+        left: 0;
+      }
+      .slick-next {
+        right: 0;
+      }
+    }
   }
   .level.genres {
     flex-direction: column;
