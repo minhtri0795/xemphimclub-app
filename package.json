@@ -2,6 +2,9 @@
   "name": "xemphimclub-app",
   "version": "0.1.0",
   "private": true,
+  "enginer": {
+    "node": "14.x"
+  },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
