@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Poster from "../Poster/Poster";
 import "./CastDetail.scss";
-function CastDetail({ cast, getId }) {
+function CastDetail({ actor, getId }) {
   const [person, setPerson] = useState({});
   const [credits, setCredits] = useState([]);
   const [images, setImage] = useState([]);
   useEffect(() => {
     const getCastInfor = async () => {
-      const url = `https://api.themoviedb.org/3/person/${cast.castId}?api_key=5761f00d4efd80b92ba2496773204780&language=en-US`;
+      const url = `https://api.themoviedb.org/3/person/${actor.actorId}?api_key=5761f00d4efd80b92ba2496773204780&language=en-US`;
       const response = await fetch(url);
       const data = await response.json();
       setPerson(data);
@@ -17,7 +17,7 @@ function CastDetail({ cast, getId }) {
   useEffect(() => {
     const getCredits = async () => {
       const url = `
-      https://api.themoviedb.org/3/person/${cast.castId}/movie_credits?api_key=5761f00d4efd80b92ba2496773204780&language=en-US`;
+      https://api.themoviedb.org/3/person/${actor.actorId}/movie_credits?api_key=5761f00d4efd80b92ba2496773204780&language=en-US`;
       const response = await fetch(url);
       const data = await response.json();
       setCredits(data.cast);
@@ -27,7 +27,7 @@ function CastDetail({ cast, getId }) {
   useEffect(() => {
     const getImage = async () => {
       const url = `
-      https://api.themoviedb.org/3/person/${cast.castId}/images?api_key=5761f00d4efd80b92ba2496773204780&language=en-US`;
+      https://api.themoviedb.org/3/person/${actor.actorId}/images?api_key=5761f00d4efd80b92ba2496773204780&language=en-US`;
       const response = await fetch(url);
       const data = await response.json();
       setImage(data.profiles);

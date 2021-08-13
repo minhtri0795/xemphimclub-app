@@ -1,60 +1,32 @@
-import React, { useEffect } from "react";
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CastDetail from "./component/CastDetail/CastDetail";
 import Colection from "./component/Colection/Colection";
 import DetailMovie from "./component/DetailMovie/DetailMovie";
 import FAQpage from "./component/FAQpage/FAQpage";
 import Footer from "./component/Footer/Footer";
+import Homepage from "./component/Homepage/Homepage";
 import MoviePage from "./component/MoviePage/MoviePage";
 import NavBar from "./component/NavBar/NavBar";
-import Poster from "./component/Poster/Poster";
 import SearchPage from "./component/SearchPage/SearchPage";
 import TVPage from "./component/TVPage/TVPage";
 import WatchPage from "./component/WatchPage/WatchPage";
 function App() {
-  const [recommentFilm, setRecommnetFilm] = useState([]);
-  const [newFilm, setNewFilm] = useState([]);
-  const [newTV, setNewTV] = useState([]);
-  useEffect(() => {
-    const fecthMovie = async () => {
-      const URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=5761f00d4efd80b92ba2496773204780&language=vi`;
-      const response = await fetch(URL);
-      const data = await response.json();
-      const { results } = data;
-      setRecommnetFilm(results);
-    };
-    fecthMovie();
-  }, []);
-  useEffect(() => {
-    const fecthMovie = async (specify) => {
-      const URL = `https://api.themoviedb.org/3/discover/${specify}?api_key=5761f00d4efd80b92ba2496773204780&language=vi`;
-      const response = await fetch(URL);
-      const data = await response.json();
-      const { results } = data;
-      if (specify === "movie") {
-        setNewFilm(results);
-      } else setNewTV(results);
-    };
-    fecthMovie("tv");
-    fecthMovie("movie");
-  }, []);
-  const [id, setId] = useState();
-  const [type, setType] = useState("");
-  const [cast, setCast] = useState({
-    castId: "",
+  const [MovieID, setMovieID] = useState();
+  const [MovieType, setMovieType] = useState("");
+  const [actor, setActor] = useState({
+    actorId: "",
     name: "",
   });
-
-  const getId = (newId, newType) => {
-    setId(newId);
-    setType(newType);
-  };
-  const getCastId = (myCastId, myCastName) => {
-    const newCast = { ...cast, castId: myCastId, name: myCastName };
-    setCast(newCast);
-  };
   const [colection, setColection] = useState([]);
+  const getId = (newId, newType) => {
+    setMovieID(newId);
+    setMovieType(newType);
+  };
+  const getCastId = (myActorId, myActorName) => {
+    const newActor = { ...actor, actorId: myActorId, name: myActorName };
+    setActor(newActor);
+  };
   const getColection = (colectionFilm) => {
     const newColection = [...colection];
     newColection.unshift(colectionFilm);
@@ -78,55 +50,24 @@ function App() {
             <FAQpage />
           </Route>
           <Route exact path={`/colection`}>
-            <Colection type={type} colection={colection} getId={getId} />
+            <Colection type={MovieType} colection={colection} getId={getId} />
           </Route>
-          <Route exact path={`/${type}/${id}`}>
+          <Route exact path={`/${MovieType}/${MovieID}`}>
             <DetailMovie
-              id={id}
-              type={type}
+              id={MovieID}
+              type={MovieType}
               getCastId={getCastId}
               getColection={getColection}
             />
           </Route>
-          <Route exact path={`/cast/${cast.name}`}>
-            <CastDetail cast={cast} getId={getId} />
+          <Route exact path={`/cast/${actor.name}`}>
+            <CastDetail actor={actor} getId={getId} />
           </Route>
-          <Route exact path={`/watch/${type}/${id}`}>
-            <WatchPage type={type} id={id} />
+          <Route exact path={`/watch/${MovieType}/${MovieID}`}>
+            <WatchPage type={MovieType} id={MovieID} />
           </Route>
           <Route path="/">
-            <div className="home-section">
-              <div className="container">
-                <div className="title">
-                  <h2>PHIM ĐỀ CỬ</h2>
-                </div>
-                <Poster
-                  type={"movie"}
-                  getId={getId}
-                  filmData={recommentFilm}
-                  number={8}
-                />
-                <div className="title">
-                  <h2>PHIM LẺ MỚI CẬP NHẬT</h2>
-                  <p>
-                    <Link to="/type/movie">Xem tất cả</Link>
-                  </p>
-                </div>
-                <Poster
-                  type={"movie"}
-                  getId={getId}
-                  filmData={newFilm}
-                  number={8}
-                />
-                <div className="title">
-                  <h2>PHIM BỘ MỚI CẬP NHẬT</h2>
-                  <p>
-                    <Link to="/type/tv">Xem tất cả</Link>
-                  </p>
-                </div>
-                <Poster type={"tv"} getId={getId} filmData={newTV} number={8} />
-              </div>
-            </div>
+            <Homepage getId={getId} />
           </Route>
         </Switch>
         <Footer />
@@ -134,5 +75,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;
