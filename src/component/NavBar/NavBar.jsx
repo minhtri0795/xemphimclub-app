@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Logout from "../LoginPage/Logout";
 import "./NavBar.scss";
 import logo from "../../images/logo-full.png";
 import { NavLink } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
-function NavBar() {
+function NavBar({ userInfo }) {
   const [sidebar, setSideBar] = useState("");
+
+  useEffect(() => {
+    // add the code to focus on particular element.
+  }, [userInfo]);
   return (
     <>
       <div className="nav-bar">
@@ -54,11 +59,23 @@ function NavBar() {
           </li>
         </ul>
         <div className="colection">
-          <p>
-            <NavLink activeClassName="selected" to="/colection">
-              Bộ sưu tập
-            </NavLink>
-          </p>
+          {!Object.keys(userInfo).includes("name") ? (
+            <p className="login">
+              <NavLink to="/login">Đăng nhập</NavLink>
+            </p>
+          ) : (
+            <>
+              <p className="user">
+                <img src={userInfo.imageUrl} alt="" />
+                {userInfo.name}
+                <div className="user__expand">
+                  <a href="#">Cá nhân</a>
+                  <NavLink to="/colection">Bộ sưu tập</NavLink>
+                  <Logout />
+                </div>
+              </p>
+            </>
+          )}
         </div>
       </div>
       <div className={`nav-bar-mobile ${sidebar}`}>

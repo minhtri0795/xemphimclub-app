@@ -1,0 +1,99 @@
+.login__page {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  .container {
+    margin: 0 auto;
+  }
+}
+.form__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.125;
+    color: #7a7a7a;
+    margin-bottom: 24px;
+  }
+  form {
+    margin-bottom: 24px;
+    background-color: #363636;
+    border-radius: 6px;
+    display: block;
+    padding: 1.25rem;
+  }
+  .form__group {
+    margin-bottom: 12px;
+    input:not([type="checkbox"]) {
+      font-size: 24px;
+      box-shadow: inset 0 0.0625em 0.125em rgba($color: #f1f1f1, $alpha: 0.5);
+      max-width: 100%;
+      width: 100%;
+      background-color: #fff;
+      border-color: #dbdbdb;
+      border-radius: 4px;
+      color: #363636;
+      height: 2.5em;
+      outline: nones;
+      justify-content: flex-start;
+      line-height: 1.5;
+      padding: calc(0.5em - 1px) calc(0.75em - 1px);
+      position: relative;
+      vertical-align: top;
+      &::placeholder {
+        color: #36363675;
+      }
+    }
+    .checkbox {
+      cursor: pointer;
+      display: inline-block;
+      line-height: 1.25;
+      position: relative;
+      color: #7a7a7a;
+      input {
+        margin-right: 4px;
+        cursor: pointer;
+      }
+      &:hover {
+        color: rgb(221, 221, 16);
+      }
+    }
+  }
+  .login__btn {
+    width: 100%;
+    background-color: #3298dc;
+    border-color: transparent;
+    color: #fff;
+    font-size: 24px;
+    display: block;
+    border-width: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    justify-content: center;
+    padding: calc(0.5em - 1px) 1em;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .divider {
+    display: block;
+    position: relative;
+    border-top: 0.1rem solid #dbdbdb;
+    height: 0.1rem;
+    margin: 2rem 0;
+    text-align: center;
+    position: relative;
+    &::after {
+      background: #fff;
+      color: #7a7a7a;
+      content: "HOẶC";
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.4rem 0.8rem;
+      -webkit-transform: translateY(-1.1rem);
+      transform: translateY(-1.1rem);
+      text-align: center;
+    }
+  }
+}

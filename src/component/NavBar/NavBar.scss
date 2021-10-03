@@ -35,6 +35,9 @@
       a {
         padding: 12px;
         height: 100%;
+        &:hover {
+          background-color: #102c48;
+        }
       }
       .selected {
         background-color: #102c48;
@@ -52,6 +55,49 @@
     p {
       height: 100%;
       line-height: 50px;
+    }
+    .login {
+      background-color: #cf2122;
+      color: #fff;
+      padding: 0 12px;
+      border-radius: 6px;
+      height: 80%;
+      transform: translateY(10%);
+      display: flex;
+      align-items: center;
+      margin: auto 0;
+      &:hover {
+        background-color: #b31414;
+      }
+    }
+  }
+  .user {
+    display: flex;
+    img {
+      margin-right: 4px;
+      border-radius: 50%;
+    }
+    &:hover {
+      .user__expand {
+        display: block;
+      }
+    }
+  }
+  .user__expand {
+    display: none;
+    position: absolute;
+    width: max-content;
+    text-align: center;
+    right: -12px;
+    bottom: -150px;
+    background-color: #363636;
+    padding: 0 24px;
+    border-radius: 0 0 4px 4px;
+    border-top: 2px solid #fff;
+    a {
+      &:hover {
+        color: rgb(206, 206, 28);
+      }
     }
   }
 }

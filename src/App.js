@@ -11,6 +11,7 @@ import NavBar from "./component/NavBar/NavBar";
 import SearchPage from "./component/SearchPage/SearchPage";
 import TVPage from "./component/TVPage/TVPage";
 import WatchPage from "./component/WatchPage/WatchPage";
+import Loginpage from "./component/LoginPage/Loginpage";
 function App() {
   const [MovieID, setMovieID] = useState();
   const [MovieType, setMovieType] = useState("");
@@ -18,6 +19,7 @@ function App() {
     actorId: "",
     name: "",
   });
+  const [userInfo, setUserInfo] = useState({});
   const [colection, setColection] = useState([]);
   const getId = (newId, newType) => {
     setMovieID(newId);
@@ -32,10 +34,14 @@ function App() {
     newColection.unshift(colectionFilm);
     setColection(newColection);
   };
+  const userProfile = (profile) => {
+    setUserInfo(profile);
+    console.log(userInfo);
+  };
   return (
     <Router>
       <div className="App">
-        <NavBar />
+        <NavBar userInfo={userInfo} />
         <Switch>
           <Route path="/search">
             <SearchPage getId={getId} />
@@ -51,6 +57,9 @@ function App() {
           </Route>
           <Route exact path={`/colection`}>
             <Colection type={MovieType} colection={colection} getId={getId} />
+          </Route>
+          <Route exact path={`/login`}>
+            <Loginpage userProfile={userProfile} />
           </Route>
           <Route exact path={`/${MovieType}/${MovieID}`}>
             <DetailMovie
