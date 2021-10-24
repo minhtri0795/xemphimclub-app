@@ -31,9 +31,24 @@ function Homepage({ getId }) {
   return (
     <div className="home-section">
       <div className="container">
-        <TitleMovie type={"movie"} getId={getId} filmData={recommentFilm} />
-        <TitleMovie type={"movie"} getId={getId} filmData={newFilm} />
-        <TitleMovie type={"tv"} getId={getId} filmData={newTV} />
+        <TitleMovie
+          title="PHIM ĐỀ CỬ"
+          type={"movie"}
+          getId={getId}
+          filmData={recommentFilm}
+        />
+        <TitleMovie
+          title="PHIM LẺ"
+          type={"movie"}
+          getId={getId}
+          filmData={newFilm}
+        />
+        <TitleMovie
+          title="PHIM BỘ"
+          type={"tv"}
+          getId={getId}
+          filmData={newTV}
+        />
       </div>
     </div>
   );

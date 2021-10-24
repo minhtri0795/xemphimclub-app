@@ -12,6 +12,7 @@ import SearchPage from "./component/SearchPage/SearchPage";
 import TVPage from "./component/TVPage/TVPage";
 import WatchPage from "./component/WatchPage/WatchPage";
 import Loginpage from "./component/LoginPage/Loginpage";
+import Signup from "./component/Signup/Signup";
 function App() {
   const [MovieID, setMovieID] = useState();
   const [MovieType, setMovieType] = useState("");
@@ -21,6 +22,7 @@ function App() {
   });
   const [userInfo, setUserInfo] = useState({});
   const [colection, setColection] = useState([]);
+  const [isLogin, setIsLogin] = useState(false);
   const getId = (newId, newType) => {
     setMovieID(newId);
     setMovieType(newType);
@@ -35,13 +37,13 @@ function App() {
     setColection(newColection);
   };
   const userProfile = (profile) => {
+    console.log(profile);
     setUserInfo(profile);
-    console.log(userInfo);
   };
   return (
     <Router>
       <div className="App">
-        <NavBar userInfo={userInfo} />
+        <NavBar userInfo={userInfo} isLogin={isLogin} />
         <Switch>
           <Route path="/search">
             <SearchPage getId={getId} />
@@ -60,6 +62,9 @@ function App() {
           </Route>
           <Route exact path={`/login`}>
             <Loginpage userProfile={userProfile} />
+          </Route>
+          <Route exact path={`/signup`}>
+            <Signup userProfile={userProfile} />
           </Route>
           <Route exact path={`/${MovieType}/${MovieID}`}>
             <DetailMovie

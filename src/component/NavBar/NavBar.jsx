@@ -1,14 +1,31 @@
 import React, { useEffect, useState } from "react";
 import Logout from "../LoginPage/Logout";
+import axios from "axios";
 import "./NavBar.scss";
 import logo from "../../images/logo-full.png";
 import { NavLink } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
-function NavBar({ userInfo }) {
+function NavBar({ userInfo, isLogin }) {
   const [sidebar, setSideBar] = useState("");
-
+  const [localUser, setLocalUser] = useState({});
+  const accessToken = localStorage.getItem("access_token");
   useEffect(() => {
-    // add the code to focus on particular element.
+    axios
+      .get("http://localhost:8000/products", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        // error.response.status Check status code
+        alert(" fail to fetch!");
+      })
+      .finally(() => {
+        //Perform action in always
+      });
   }, [userInfo]);
   return (
     <>
@@ -59,7 +76,7 @@ function NavBar({ userInfo }) {
           </li>
         </ul>
         <div className="colection">
-          {!Object.keys(userInfo).includes("name") ? (
+          {!Object.keys(userInfo).includes("name") || isLogin ? (
             <p className="login">
               <NavLink to="/login">Đăng nhập</NavLink>
             </p>

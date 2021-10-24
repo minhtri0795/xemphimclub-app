@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import "./LoginPage.scss";
+import "./Signup.scss";
 import Login from "./Login";
+import { NavLink } from "react-router-dom";
 function Loginpage({ userProfile }) {
   const initialState = {
     email: "",
     password: "",
+    name: "",
   };
   const [formData, setData] = useState(initialState);
   const onChange = (e) => {
@@ -22,27 +23,27 @@ function Loginpage({ userProfile }) {
     e.preventDefault();
     // userProfile(formData);
     axios
-      .post("http://localhost:8000/auth/login", formData)
+      .post("http://localhost:8000/auth/register", formData)
       .then((res) => {
         //Perform Success Action
-        alert("Đăng nhập thành công!");
         console.log(res);
+        localStorage.setItem("access_token", res.data.access_token);
+
         redirectHome();
       })
       .catch((error) => {
-        // error.response.status Check status code
         alert(error.response.data.message);
       })
       .finally(() => {
         //Perform action in always
       });
   };
-  const { email, password } = formData;
+  const { email, password, name } = formData;
   return (
     <div className="login__page">
       <div className="container">
         <div className="form__container">
-          <h2>Đăng nhập</h2>
+          <h2>Đăng ký</h2>
           <form onSubmit={onSubmit}>
             <div id="email" className="form__group">
               <input
@@ -51,6 +52,15 @@ function Loginpage({ userProfile }) {
                 value={email}
                 type="email"
                 placeholder="Email"
+              />
+            </div>
+            <div id="email" className="form__group">
+              <input
+                onChange={onChange}
+                name="name"
+                value={name}
+                type="text"
+                placeholder="Tên bạn"
               />
             </div>
             <div id="password" className="form__group">
@@ -65,15 +75,15 @@ function Loginpage({ userProfile }) {
             <div className="form__group">
               <label htmlFor="" className="checkbox">
                 <input type="checkbox" />
-                Ghi nhớ
+                Đăng ký nhận thông báo về trang web
               </label>
             </div>
-            <button className="login__btn">Đăng nhập</button>
+            <button className="login__btn">Đăng ký</button>
             <div className="divider"></div>
             <Login userProfile={userProfile} />
           </form>
-          <NavLink className="helper-text" to="/signup">
-            Đăng ký
+          <NavLink className="helper-text" to="/login">
+            Đăng nhập
           </NavLink>
         </div>
       </div>
